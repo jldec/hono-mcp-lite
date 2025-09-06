@@ -1,0 +1,38 @@
+{
+  "name": "hono-mcp-lite",
+  "type": "module",
+  "description": "A template for building a React application with Vite, Hono, and Cloudflare Workers",
+  "version": "1.0.0",
+  "dependencies": {
+    "hono": "4.9.6",
+    "mcp-lite": "^0.1.2",
+    "zod": "4.1.5"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.12.3",
+    "@cloudflare/workers-types": "^4.20250906.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "24.3.1",
+    "tailwindcss": "^4.1.13",
+    "typescript": "5.9.2",
+    "vite": "^7.1.4",
+    "vite-ssr-components": "^0.5.1",
+    "wrangler": "4.34.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite build && vite preview",
+    "types": "wrangler types --env-interface CloudflareBindings --include-runtime=false --strict-vars=false",
+    "ship": "vite build && wrangler deploy",
+    "check": "tsc && vite build && wrangler deploy --dry-run"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none",
+    "useTabs": false,
+    "tabWidth": 2,
+    "printWidth": 100
+  }
+}
