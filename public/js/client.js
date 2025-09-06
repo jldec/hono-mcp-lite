@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const fetchToolsBtn = document.getElementById('fetchToolsBtn')
   const helloToolBtn = document.getElementById('helloToolBtn')
+  const helloForm = document.getElementById('helloForm')
   const nameInput = document.getElementById('nameInput')
 
   const errorContent = document.getElementById('errorMessage')
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (
     !fetchToolsBtn ||
     !helloToolBtn ||
+    !helloForm ||
     !nameInput ||
     !errorContent ||
     !helloContent ||
@@ -18,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error('One or more elements not found in the DOM - see client.js')
     return
   }
+
+  // Focus on the input field when page loads
+  nameInput.focus()
 
   fetchToolsBtn.addEventListener('click', async function () {
     await fetchMcpRequest(
@@ -30,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     )
   })
 
-  helloToolBtn.addEventListener('click', async function () {
+  async function callHelloTool() {
     const name = nameInput.value.trim()
     const params = name ? { name } : {}
     await fetchMcpRequest(
@@ -45,7 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       helloContent
     )
+  }
+
+  helloForm.addEventListener('submit', function (e) {
+    e.preventDefault()
+    callHelloTool()
   })
+
+  helloToolBtn.addEventListener('click', callHelloTool)
 
   async function fetchMcpRequest(rpcPayload, resultElement) {
     try {

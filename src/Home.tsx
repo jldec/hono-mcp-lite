@@ -3,27 +3,48 @@ export default function Home() {
     <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
       <h1 class="text-4xl font-bold text-gray-800 mb-6 border-b border-gray-300">hono-mcp-lite</h1>
 
-      <p class="text-gray-600">Demo <a href="https://github.com/fiberplane/mcp" class="text-blue-500" target="_blank">mcp-lite</a> MCP server at <code class="bg-gray-100 px-1.5 py-0.5 rounded-md">POST /mcp</code></p>
+      <p class="text-gray-600">
+        Demo{' '}
+        <a href="https://github.com/fiberplane/mcp" class="text-blue-500" target="_blank">
+          mcp-lite
+        </a>{' '}
+        MCP server at <code class="bg-gray-100 px-1.5 py-0.5 rounded-md">POST /mcp</code>
+      </p>
 
-      <div class="flex gap-3 items-center my-4">
+      <form id="helloForm" class="flex gap-3 items-center my-4">
         <input
           type="text"
           id="nameInput"
           placeholder="Enter your name (optional)"
           class="flex-1 max-w-80 px-2 py-2 text-base border border-gray-300 rounded-md outline-none transition-colors duration-200 focus:border-blue-500 focus:shadow-[0_0_0_2px_rgba(0,123,255,0.25)]"
         />
-        <button id="helloToolBtn" class="px-4 py-2 text-base bg-green-600 text-white border-none rounded-md cursor-pointer transition-colors duration-200 hover:bg-green-700 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed">
+        <button
+          type="submit"
+          id="helloToolBtn"
+          class="px-4 py-2 text-base bg-green-600 text-white border-none rounded-md cursor-pointer transition-colors duration-200 hover:bg-green-700 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+        >
           Call hello
         </button>
-        <button id="fetchToolsBtn" class="px-4 py-2 text-base bg-blue-600 text-white border-none rounded-md cursor-pointer transition-opacity duration-200 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed">
+        <button
+          id="fetchToolsBtn"
+          class="px-4 py-2 text-base bg-blue-600 text-white border-none rounded-md cursor-pointer transition-opacity duration-200 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed"
+        >
           Fetch tools
         </button>
-      </div>
+      </form>
 
-      <div id="errorMessage" class="mt-4 p-2 bg-red-100 text-red-700 border border-red-200 rounded-md hidden" />
-      <pre id="helloContent" class="bg-gray-50 mt-4 p-4 rounded-md overflow-auto border border-gray-200 hidden"></pre>
-      <pre id="toolsListContent" class="bg-gray-50 mt-4 p-4 rounded-md overflow-auto border border-gray-200 hidden"></pre>
-
+      <div
+        id="errorMessage"
+        class="mt-4 p-2 bg-red-100 text-red-700 border border-red-200 rounded-md hidden"
+      />
+      <pre
+        id="helloContent"
+        class="bg-gray-50 mt-4 p-4 rounded-md overflow-auto border border-gray-200 hidden"
+      ></pre>
+      <pre
+        id="toolsListContent"
+        class="bg-gray-50 mt-4 p-4 rounded-md overflow-auto border border-gray-200 hidden"
+      ></pre>
     </div>
   )
 }
