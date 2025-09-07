@@ -1,14 +1,16 @@
-export default function Home() {
+import type { Context } from 'hono'
+
+export default function Home({ ctx }: { ctx: Context }) {
+  const url = new URL(ctx.req.url)
   return (
     <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
       <h1 class="text-4xl font-bold text-gray-800 mb-6 border-b border-gray-300">hono-mcp-lite</h1>
 
       <p class="text-gray-600">
-        Demo{' '}
         <a href="https://github.com/fiberplane/mcp" class="text-blue-500" target="_blank">
           mcp-lite
         </a>{' '}
-        MCP server at <code class="bg-gray-100 px-1.5 py-0.5 rounded-md">POST /mcp</code>
+        MCP server listening at <code class="bg-gray-100 px-1.5 py-0.5 rounded-md">{url.origin}/mcp</code>
       </p>
 
       <form id="helloForm" class="flex gap-3 items-center my-4">

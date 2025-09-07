@@ -29,15 +29,15 @@ mcp.tool('hello', {
 const transport = new StreamableHttpTransport()
 const httpHandler = transport.bind(mcp)
 
-app.all('/mcp', async (c) => {
-  const response = await httpHandler(c.req.raw)
+app.all('/mcp', async (ctx) => {
+  const response = await httpHandler(ctx.req.raw)
   return response
 })
 
 app.use(renderer)
 
-app.get('/', (c) => {
-  return c.render(<Home />)
+app.get('/', (ctx) => {
+  return ctx.render(<Home ctx={ctx} />)
 })
 
 export default app
