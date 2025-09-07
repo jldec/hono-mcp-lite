@@ -23,22 +23,23 @@ export default function Home({ ctx }: { ctx: Context }) {
         <button
           type="submit"
           id="helloToolBtn"
-          class="px-4 py-2 text-base bg-green-600 text-white border-none rounded-md cursor-pointer transition-colors duration-200 hover:bg-green-700 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+          class="px-4 py-2 text-base bg-green-600 text-white hover:underline decoration-1 decoration-wavy active:font-black border-none rounded-md cursor-pointer transition-colors duration-200 hover:bg-green-700 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
         >
           Call hello
         </button>
         <button
+          type="button"
           id="fetchToolsBtn"
-          class="px-4 py-2 text-base bg-blue-600 text-white border-none rounded-md cursor-pointer transition-opacity duration-200 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed"
+          class="px-4 py-2 text-base bg-blue-600 text-white hover:underline decoration-1 decoration-wavy active:font-black border-none rounded-md cursor-pointer transition-opacity duration-200 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed"
         >
           Fetch tools
         </button>
       </form>
 
-      <div
+      <pre
         id="errorMessage"
         class="mt-4 p-2 bg-red-100 text-red-700 border border-red-200 rounded-md hidden"
-      />
+      ></pre>
       <pre
         id="helloContent"
         class="bg-gray-50 mt-4 p-4 rounded-md overflow-auto border border-gray-200 hidden"

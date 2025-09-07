@@ -74,18 +74,24 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       await handleMcpResponse(response, resultElement)
     } catch (err) {
-      error(err)
+      error(err, rpcPayload)
     }
   }
 
-  function error(err) {
-    errorContent.textContent = err instanceof Error ? err.stack || err.message : 'An error occurred'
+  function error(err, rpcPayload) {
+    errorContent.textContent =
+      (err instanceof Error ? err.stack || err.message : 'An error occurred') +
+      (rpcPayload ? `\n\nRPC Payload: ${JSON.stringify(rpcPayload, null, 2)}` : '')
     errorContent.classList.remove('hidden')
   }
 
   async function handleMcpResponse(response, resultElement) {
     const contentType = response.headers.get('content-type')
+    errorContent.classList.add('hidden')
+    helloContent.classList.add('hidden')
+    toolsListContent.classList.add('hidden')
     resultElement.classList.remove('hidden')
+    resultElement.classList.remove('border-gray-200')
 
     if (contentType && contentType.includes('text/event-stream')) {
       // Handle Server-Sent Events
@@ -136,5 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = await response.json()
       resultElement.textContent = JSON.stringify(data, null, 2)
     }
+    setTimeout(() => {
+      resultElement.classList.add('border-gray-200')
+    }, 100)
   }
 })
